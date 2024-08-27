@@ -39,4 +39,4 @@ jobs:
             OWNER: ${{ secrets.OWNER }}
             REPO: ${{ secrets.REPO }}
             ENV: ${{ secrets.ENV }}
-            GH_TOKEN: ${{ secrets.SYNC_ACTION_TOKEN }}
+            GH_TOKEN: ${{ github.token }}
