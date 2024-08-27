@@ -16,6 +16,7 @@ jobs:
     preRelease:
       if: ${{ github.event_name == 'push' }}
       uses: stuvms/stuvms.github.io/.github/workflows/preRelease.yml@main
+      secrets: inherit
 
     Release:
       uses: stuvms/stuvms.github.io/.github/workflows/release.yml@main
