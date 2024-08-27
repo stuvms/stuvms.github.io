@@ -25,14 +25,20 @@ jobs:
             prerelease: true
             #release_name: Release ${{ steps.date.outputs.date }}-RC[${{ github.run_number }}] #Comentado para ver si no hace release
 
+        # Guardar el valor de NOW en una salida
+        - name: Set output
+          id: set_output
+          run: echo "::set-output name=now::${{ env.NOW }}"
+
     
     env-setup:
       name: Configuración de environment
       runs-on: ubuntu-latest
+      needs: preRelease
       steps:
         - name: Use tag_name from preRelease
           run: |
-            echo "Tag name from preRelease job: ${{ env.NOW }}"
+            echo "Tag name from preRelease job: ${{ needs.preRelease.outputs.now }}"
         - name: Crear branch policy
           env:
             OWNER: ${{ secrets.OWNER }}
