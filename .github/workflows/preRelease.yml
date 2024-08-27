@@ -32,9 +32,11 @@ jobs:
         - name: Ejecutar curl a la API de GH - TEST
           run: |
             curl --request GET \
-            --url "https://api.github.com/repos/stuvms/stuvms.github.io/environments/Production/deployment-branch-policies" \
+            --url "https://api.github.com/repos/$OWNER/$REPO/environments/$ENV/deployment-branch-policies" \
+            --header "Authorization: Bearer $TOKEN"
           env:
             OWNER: ${{ secrets.OWNER }}
             REPO: ${{ secrets.REPO }}
             ENV: ${{ secrets.ENV }}
-            TOKEN: ${{ secrets.TOKEN }}
+            #TOKEN: ${{ secrets.TOKEN }}
+            #--header "Authorization: Bearer $TOKEN"
