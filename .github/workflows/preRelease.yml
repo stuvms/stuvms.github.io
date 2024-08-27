@@ -32,7 +32,7 @@ jobs:
       steps:
         - name: Use tag_name from preRelease
           run: |
-            echo "Tag name from preRelease job: ${{ steps.create_release.outputs.tag_name }}"
+            echo "Tag name from preRelease job: ${{ env.NOW }}"
         - name: Crear branch policy
           env:
             OWNER: ${{ secrets.OWNER }}
