@@ -31,10 +31,9 @@ jobs:
       steps:
         - name: Ejecutar curl a la API de GH - TEST
           run: |
-            gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/$OWNER/$REPO/environments/$ENV/deployment-branch-policies
+            curl --request GET \
+            --url "https://api.github.com/repos/$OWNER/$REPO/environments/$ENV/deployment-branch-policies" \
+            --header "Authorization: Bearer $TOKEN"
           env:
             OWNER: ${{ secrets.OWNER }}
             REPO: ${{ secrets.REPO }}
