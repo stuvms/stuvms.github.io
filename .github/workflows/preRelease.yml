@@ -30,12 +30,13 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Ejecutar curl a la API de GH - TEST
-          run: |
-            curl --request GET \
-            --url "https://api.github.com/repos/$OWNER/$REPO/environments/$ENV/deployment-branch-policies" \
           env:
             OWNER: ${{ secrets.OWNER }}
             REPO: ${{ secrets.REPO }}
             ENV: ${{ secrets.ENV }}
             #TOKEN: ${{ secrets.TOKEN }}
             #--header "Authorization: Bearer $TOKEN"
+            #ARREGLA LO DE LAS ENV VAR PARA EL BASH
+          run: |
+            curl --request GET \
+            --url "https://api.github.com/repos/$OWNER/$REPO/environments/$ENV/deployment-branch-policies" \
