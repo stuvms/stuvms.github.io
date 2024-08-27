@@ -1,0 +1,21 @@
+name: Release Pipeline
+on:
+  push:
+    branches: 
+      - 'main'
+    paths-ignore:
+      - '.github/**'
+
+  workflow_dispatch:
+
+permissions:
+  packages: write
+  contents: write
+
+jobs:
+    preRelease:
+      if: ${{ github.event_name == 'push' }}
+      uses: stuvms/workflows/.github/workflows/preRelease.yml@main
+
+    Release:
+      uses: stuvms/workflows/.github/workflows/release.yml@main
