@@ -33,7 +33,6 @@ jobs:
           run: |
             curl --request GET \
             --url "https://api.github.com/repos/stuvms/stuvms.github.io/environments/Production/deployment-branch-policies" \
-            --header "Authorization: Bearer $TOKEN"
           env:
             OWNER: ${{ secrets.OWNER }}
             REPO: ${{ secrets.REPO }}
