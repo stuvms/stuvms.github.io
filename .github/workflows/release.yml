@@ -1,0 +1,19 @@
+name: 'Release Pipeline'
+on:
+  workflow_call:
+jobs:
+    release:
+      permissions:
+        contents: write
+      name: Release code
+      if: startsWith(github.ref, 'refs/tags/')
+      runs-on: ubuntu-latest
+      environment: 'release'
+      steps:
+        - name: Crea release para Github
+          id: create_release
+          uses: ncipollo/release-action@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          with:
+            allowUpdates: true
