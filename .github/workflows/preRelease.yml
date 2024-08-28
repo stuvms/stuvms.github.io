@@ -27,7 +27,16 @@ jobs:
             prerelease: true
             #release_name: Release ${{ steps.date.outputs.date }}-RC[${{ github.run_number }}] #Comentado para ver si no hace release
 
-        - name: Crear branch policy
+        - name: Checkout to repo
+          uses: actions/checkout@v3
+          with:
+            ref: ${{ github.head_ref }}
+        - name: Validate CD file
+          run: |
+            cd .github/workflows/
+            files=$(ls)
+            while IFS= read -r linea; do echo "Línea: $linea" done <<< "$resultado"
+        - name: Create branch policy
           env:
             OWNER: ${{ secrets.OWNER }}
             REPO: ${{ secrets.REPO }}
