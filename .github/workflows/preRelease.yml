@@ -38,7 +38,7 @@ jobs:
             cd .github/workflows/
             ls -lah
             files=$(ls)
-            while IFS= read -r linea; do echo "Línea: $linea" done <<< "$resultado"
+            while IFS= read -r linea; do echo "Línea: $linea" done <<< "$files"
         - name: Create branch policy
           env:
             OWNER: ${{ secrets.OWNER }}
