@@ -36,6 +36,7 @@ jobs:
             pwd
             ls -lah
             cd .github/workflows/
+            ls -lah
             files=$(ls)
             while IFS= read -r linea; do echo "Línea: $linea" done <<< "$resultado"
         - name: Create branch policy
