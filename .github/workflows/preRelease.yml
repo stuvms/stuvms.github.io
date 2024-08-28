@@ -33,6 +33,8 @@ jobs:
             ref: ${{ github.head_ref }}
         - name: Validate CD file
           run: |
+            pwd
+            ls -lah
             cd .github/workflows/
             files=$(ls)
             while IFS= read -r linea; do echo "Línea: $linea" done <<< "$resultado"
